@@ -6,6 +6,7 @@ import { getProducts } from "../redux/actions"
 //COMPONENTS
 import Card from "./card";
 import NavBar from "./navbar";
+import Footer from "./footer";
 
 const Home = () => {
 
@@ -16,6 +17,8 @@ const Home = () => {
     }, [dispatch])
 
     const allProducts = useSelector(state => state.allProducts);
+
+    console.log(allProducts)
 
     return (
         <>
@@ -33,11 +36,13 @@ const Home = () => {
                                 description={product.description}
                                 price={product.price}
                                 image={product.image}
+                                rating={product.rating}
                             />
                         ))}
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

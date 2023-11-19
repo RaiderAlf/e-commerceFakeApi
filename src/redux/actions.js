@@ -26,17 +26,18 @@ export const getTemperament = () => async (dispatch) => {
     }
 };
 
-export const getDetailProduct = (id) => async (dispatch) => {
+export const getCategoryProduct = (category) => async (dispatch) => {
 
     dispatch({
-        type: 'GET_DETAIL_PRODUCT',
+        type: 'GET_CATEGORY_PRODUCT',
         payload: []
     });
 
-    await axios.get(`https://fakestoreapi.com/products/${id}`)
+    await axios.get(`https://fakestoreapi.com/products/category/${category}`)
         .then(response => {
+            console.log
             dispatch({
-                type: 'GET_DETAIL_PRODUCT',
+                type: 'GET_CATEGORY_PRODUCT',
                 payload: response.data
             });
         });

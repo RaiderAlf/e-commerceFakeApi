@@ -27,10 +27,10 @@ function rootReducer(state = initialState, action) {
                 temperament: action.payload
             };
 
-        case 'GET_DETAIL_PRODUCT':
+        case 'GET_CATEGORY_PRODUCT':
             return {
                 ...state,
-                detail: action.payload
+                product: action.payload
             };
 
         default:
