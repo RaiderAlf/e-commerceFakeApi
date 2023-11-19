@@ -2,19 +2,33 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useDispatch } from 'react-redux'
+//ACTIONS
+import { getCategoryProduct, getProducts } from '../redux/actions'
 
 const navigation = {
     categories: [
     ],
     pages: [
-        { name: 'Electronics', href: '#' },
-        { name: 'Jewelery', href: '#' },
+        { name: "All Products", href: "#" },
         { name: "Men's Clothing", href: '#' },
         { name: "Women's Clothing", href: '#' },
+        { name: 'Jewelery', href: '#' },
+        { name: 'Electronics', href: '#' }
     ],
 }
 
 const NavBar = () => {
+
+    const dispatch = useDispatch()
+
+    const handleFilter = (page) => {
+        dispatch(getCategoryProduct(page));
+    };
+
+    const handleAllProducts = () => {
+        dispatch(getProducts())
+    }
 
 
     const [open, setOpen] = useState(false)
@@ -64,8 +78,13 @@ const NavBar = () => {
 
                                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                                     {navigation.pages.map((page) => (
+
                                         <div key={page.name} className="flow-root">
-                                            <a href={page.href} className="-m-2 block p-2 font-medium text-gray-900">
+                                            <a href={page.href} onClick={page.name == "All Products" ?
+                                                () => handleAllProducts() :
+                                                () => handleFilter(page.name.toLowerCase())
+                                            }
+                                                className="-m-2 block p-2 font-medium text-gray-900">
                                                 {page.name}
                                             </a>
                                         </div>
@@ -134,9 +153,14 @@ const NavBar = () => {
                                 <div className="flex h-full space-x-8">
                                     {navigation.pages.map((page) => (
                                         <a
+                                            onClick={
+                                                page.name == "All Products" ?
+                                                    () => handleAllProducts() :
+                                                    () => handleFilter(page.name.toLowerCase())
+                                            }
                                             key={page.name}
                                             href={page.href}
-                                            className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                                            className="flex items-center text-sm font-medium text-slate-500 hover:text-slate-900 hover:underline "
                                         >
                                             {page.name}
                                         </a>
@@ -146,17 +170,17 @@ const NavBar = () => {
 
                             <div className="ml-auto flex items-center">
                                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                                    <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                                    <a href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
                                         Sign in
                                     </a>
                                     <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                                    <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                                    <a href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
                                         Create account
                                     </a>
                                 </div>
 
                                 <div className="hidden lg:ml-8 lg:flex ">
-                                    <a href="#" className="flex items-center text-gray-700 hover:text-gray-800">
+                                    <a href="#" className="flex items-center text-slate-500 hover:text-slate-900">
                                         <img
                                             src="https://tailwindui.com/img/flags/flag-canada.svg"
                                             alt=""
@@ -191,7 +215,7 @@ const NavBar = () => {
                     </div>
                 </nav>
             </header>
-        </div>
+        </div >
     )
 }
 

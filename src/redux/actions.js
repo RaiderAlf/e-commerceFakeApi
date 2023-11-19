@@ -17,6 +17,7 @@ export const getProducts = () => async (dispatch) => {
 export const getTemperament = () => async (dispatch) => {
     try {
         const response = await axios.get('https://dogsapi-nhcb.onrender.com/temperament/');
+        console.log(response.data)
         dispatch({
             type: 'GET_TEMPERAMENT',
             payload: response.data.results

@@ -16,9 +16,7 @@ const Home = () => {
         dispatch(getProducts());
     }, [dispatch])
 
-    const allProducts = useSelector(state => state.allProducts);
-
-    console.log(allProducts)
+    const allProducts = useSelector(state => state.product)
 
     return (
         <>
