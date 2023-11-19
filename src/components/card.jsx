@@ -42,7 +42,7 @@ const Card = (product) => {
                                 leaveTo="opacity-0 scale-95"
                             >
                                 <Dialog.Panel className="w-full flex flex-col justify-center items-center max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                                    <button className='bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4' onClick={closeModal} >X</button>
+                                    <button className='bg-white hover:bg-gray-100 text-gray-800 font-semibold p-2' onClick={closeModal} >X</button>
                                     <Dialog.Title
                                         as="h3"
                                         className="text-lg text-center font-medium leading-6 text-gray-900"
