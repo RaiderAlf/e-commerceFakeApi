@@ -57,7 +57,7 @@ const Card = (product) => {
                                                 className="h-80"
                                             />
                                         </div>
-                                        <p className="mt-1 text-center font-medium text-gray-900">{product.price} $</p>
+                                        <p className="mt-1 text-center font-medium text-gray-900">Price: {product.price} $</p>
                                         <p className="mt-1 text-center text-sm text-gray-900">{product.description} $</p>
                                         <br />
                                         <div className="flex justify-center items-center">
