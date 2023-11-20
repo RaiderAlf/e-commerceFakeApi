@@ -1,6 +1,7 @@
 const initialState = {
     product: [],
     allProducts: [],
+    cartProducts: [],
     temperament: [],
     detail: {}
 };
@@ -21,10 +22,10 @@ function rootReducer(state = initialState, action) {
                 dogs: action.payload
             }
 
-        case 'GET_TEMPERAMENT':
+        case 'ADD_CART_PRODUCTS':
             return {
                 ...state,
-                temperament: action.payload
+                cartProducts: action.payload
             };
 
         case 'GET_CATEGORY_PRODUCT':

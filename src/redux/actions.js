@@ -14,19 +14,6 @@ export const getProducts = () => async (dispatch) => {
         });
 };
 
-export const getTemperament = () => async (dispatch) => {
-    try {
-        const response = await axios.get('https://dogsapi-nhcb.onrender.com/temperament/');
-        console.log(response.data)
-        dispatch({
-            type: 'GET_TEMPERAMENT',
-            payload: response.data.results
-        });
-    } catch (error) {
-        console.log(error);
-    }
-};
-
 export const getCategoryProduct = (category) => async (dispatch) => {
 
     dispatch({
@@ -44,32 +31,10 @@ export const getCategoryProduct = (category) => async (dispatch) => {
         });
 };
 
-export const getDogName = (name) => async (dispatch) => {
-    try {
-        dispatch({
-            type: 'GET_DOG_NAME',
-            payload: []
-        });
+export function addCartProducts(payload) {
 
-        await axios.get('https://dogsapi-nhcb.onrender.com/dogs?name=' + name)
-            .then(response =>
-                dispatch({
-                    type: 'GET_DOG_NAME',
-                    payload: response.data.results
-                }));
-    } catch (error) {
-        dispatch({
-            type: 'GET_DOG_NAME',
-            payload: [false]
-        });
-    }
-
-};
-
-export function filterDogsByTemperament(payload) {
-    console.log(payload)
     return {
-        type: 'FILTER_BY_TEMPERAMENT',
+        type: 'ADD_CART_PRODUCTS',
         payload
     };
 
