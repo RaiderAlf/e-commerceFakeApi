@@ -2,6 +2,8 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+//HOOKS
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 //ACTIONS
 import { getCategoryProduct, getProducts, removeCartProducts } from '../redux/actions'
@@ -127,9 +129,9 @@ const NavBar = () => {
 
                                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                                     <div className="flow-root">
-                                        <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
+                                        <Link to='/signin' href="#" className="-m-2 block p-2 font-medium text-gray-900">
                                             Sign in
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="flow-root">
                                         <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
@@ -204,9 +206,9 @@ const NavBar = () => {
 
                             <div className="ml-auto flex items-center">
                                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                                    <a href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
+                                    <Link to='/signin' href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
                                         Sign in
-                                    </a>
+                                    </Link>
                                     <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                                     <a href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
                                         Create account

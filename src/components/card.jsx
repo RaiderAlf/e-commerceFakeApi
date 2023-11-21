@@ -1,6 +1,5 @@
 //DEPENDENCIES
 import { Dialog, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
 //HOOKS
 import { useSelector } from 'react-redux'
 import { Fragment, useState } from "react"
@@ -62,7 +61,7 @@ const Card = (product) => {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="w-fit flex flex-col items-center justify-center max-w-md text-blue-900 transform overflow-hidden rounded-2xl bg-slate-100 p-6 text-left align-middle shadow-xl transition-all" role="alert">
+                                <Dialog.Panel onClick={closeAlert} className="w-fit flex flex-col items-center justify-center max-w-md text-blue-900 transform overflow-hidden rounded-2xl bg-slate-100 p-6 text-left align-middle shadow-xl transition-all" role="alert">
                                     <button
                                         type="button"
                                         className="relative flex flex-col items-center justify-center gap-1 -m-2 p-2 text-blue-800 hover:text-black-500"
