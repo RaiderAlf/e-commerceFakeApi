@@ -5,6 +5,8 @@ import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outli
 import { useDispatch, useSelector } from 'react-redux'
 //ACTIONS
 import { getCategoryProduct, getProducts, removeCartProducts } from '../redux/actions'
+//ASSETS
+import LOGO from '../assets/LOGO.jpg'
 
 
 const navigation = {
@@ -170,14 +172,14 @@ const NavBar = () => {
 
                             {/* Logo */}
                             <div className="ml-4 flex lg:ml-0">
-                                <a href="#">
+                                <div >
                                     <span className="sr-only">Your Company</span>
                                     <img
-                                        className="h-8 w-auto"
-                                        src=""
+                                        className="h-12 rounded w-auto"
+                                        src={LOGO}
                                         alt="YOUR"
                                     />
-                                </a>
+                                </div>
                             </div>
 
                             {/* Flyout menus */}
@@ -353,7 +355,7 @@ const NavBar = () => {
                                                         <button
                                                             type="button"
                                                             className="font-medium text-indigo-600 hover:text-indigo-500"
-                                                            onClick={() => setOpen(false)}
+                                                            onClick={closeModal}
                                                         >
                                                             Continue Shopping
                                                             <span aria-hidden="true"> &rarr;</span>

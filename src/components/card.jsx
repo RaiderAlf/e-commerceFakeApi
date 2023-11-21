@@ -1,5 +1,6 @@
 //DEPENDENCIES
 import { Dialog, Transition } from '@headlessui/react'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 //HOOKS
 import { useSelector } from 'react-redux'
 import { Fragment, useState } from "react"
@@ -47,10 +48,10 @@ const Card = (product) => {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <div className="fixed inset-0 bg-black/75" />
+                        <div className="fixed inset-0 bg-black/50" />
                     </Transition.Child>
 
-                    <div className="fixed inset-0 overflow-y-auto">
+                    <div className="fixed inset-0 ">
                         <div className="flex min-h-full items-center justify-center p-4 text-center">
                             <Transition.Child
                                 as={Fragment}
@@ -61,16 +62,25 @@ const Card = (product) => {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                                    <div className="flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">
+                                <Dialog.Panel className="w-fit flex flex-col items-center justify-center max-w-md text-blue-900 transform overflow-hidden rounded-2xl bg-slate-100 p-6 text-left align-middle shadow-xl transition-all" role="alert">
+                                    <button
+                                        type="button"
+                                        className="relative flex flex-col items-center justify-center gap-1 -m-2 p-2 text-blue-800 hover:text-black-500"
+                                        onClick={closeAlert}
+                                    >
+                                        <span className="absolute -inset-0.5" />
+                                        <span className="sr-only">Close panel</span>
                                         <svg className="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
                                         </svg>
+                                    </button>
+                                    <div className='flex items-center justify-center'>
                                         <span className="sr-only">Info</span>
-                                        <div>
-                                            <span className="font-medium">Info alert!</span> Product added
+                                        <div className='flex flex-col items-center justify-center gap-1'>
+                                            <span className="font-medium">Alert!</span> Product added
                                         </div>
                                     </div>
+
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>
@@ -141,13 +151,13 @@ const Card = (product) => {
                     </div>
                 </Dialog>
             </Transition>
-            <div key={product.id} className="group p-2 flex rounded border border-gray-100 flex-col justify-center items-center">
+            <div key={product.id} className="group transition ease-in duration-200 cursor-pointer p-2 flex rounded border border-gray-100 flex-col justify-center items-center hover:bg-black/5 hover:underline">
                 <h3 className="mt-4 text-center text-sm font-medium text-gray-700">{product.title}</h3>
                 <div className="flex flex-col justify-center items-center aspect-h-1 h-56 aspect-w-1 w-full overflow-hidden rounded-lg xl:aspect-h-8 xl:aspect-w-7" onClick={openModal}>
                     <img
                         src={product.image}
                         alt={product.description}
-                        className="w-36"
+                        className="w-36 rounded-lg p-1"
                     />
                 </div>
                 <p className="mt-1 text-lg p-4 font-medium text-gray-900">$ {product.price}</p>
