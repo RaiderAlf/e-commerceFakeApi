@@ -31,13 +31,12 @@ export const getCategoryProduct = (category) => async (dispatch) => {
         });
 };
 
-export function addCartProducts(payload) {
+export const removeCartProducts = () => (dispatch) => {
 
-    return {
-        type: 'ADD_CART_PRODUCTS',
-        payload
-    };
-
+    dispatch({
+        type: 'REMOVE_CART_PRODUCTS',
+        payload: []
+    })
 }
 
 export function filterCreated(payload) {

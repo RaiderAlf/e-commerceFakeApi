@@ -4,7 +4,7 @@ import { Dialog, Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useDispatch, useSelector } from 'react-redux'
 //ACTIONS
-import { getCategoryProduct, getProducts } from '../redux/actions'
+import { getCategoryProduct, getProducts, removeCartProducts } from '../redux/actions'
 
 
 const navigation = {
@@ -23,18 +23,25 @@ const navigation = {
 
 const NavBar = () => {
 
+    const dispatch = useDispatch()
 
     const products = useSelector(state => state.cartProducts)
+
+    console.log(products)
+
 
     let result = 0;
 
     if (products.length > 0) {
         for (let i = 0; i < products.length; i++) {
-            result = products[i].price + result
+            result = Math.round(products[i].price + result)
         }
     }
 
-    const dispatch = useDispatch()
+    const removeAllItems = () => {
+        dispatch(removeCartProducts())
+    }
+
 
     const handleFilter = (page) => {
         dispatch(getCategoryProduct(page));
@@ -278,48 +285,51 @@ const NavBar = () => {
                                                 </div>
 
                                                 <div className="mt-8">
-                                                    <div className="flow-root">
-                                                        <ul role="list" className="-my-6 divide-y divide-gray-200">
-                                                            {products.length > 0 ? products.map((product) => (
-                                                                <li key={product.id} className="flex py-6">
-                                                                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                                        <img
-                                                                            src={product.imageSrc}
-                                                                            alt={product.imageAlt}
-                                                                            className="h-full w-full object-cover object-center"
-                                                                        />
-                                                                    </div>
-
-                                                                    <div className="ml-4 flex flex-1 flex-col">
-                                                                        <div>
-                                                                            <div className="flex justify-between text-base font-medium text-gray-900">
-                                                                                <h3>
-                                                                                    <a href={product.href}>{product.name}</a>
-                                                                                </h3>
-                                                                                <p className="ml-4">$ {product.price}</p>
+                                                    <div className="flow-root grid place-content-center">
+                                                        {products.length > 0 ?
+                                                            <ul role="list" className="-my-6 divide-y divide-gray-100">
+                                                                <button className="font-medium text-xs text-indigo-500 hover:text-indigo-500" onClick={() => removeAllItems()} >Delete Cart</button>
+                                                                <hr />
+                                                                {
+                                                                    products.map((product) => (
+                                                                        <li key={product.id} className="flex py-6">
+                                                                            <div className="h-24 w-28 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                                                                <img
+                                                                                    src={product.image}
+                                                                                    alt={product.title}
+                                                                                    className="h-fit w-fit"
+                                                                                />
                                                                             </div>
-                                                                            <p className="mt-1 text-sm text-gray-500">{product.color}</p>
-                                                                        </div>
-                                                                        <div className="flex flex-1 items-end justify-between text-sm">
-                                                                            <p className="text-gray-500">Qty {product.quantity}</p>
 
-                                                                            <div className="flex">
-                                                                                <button
-                                                                                    type="button"
-                                                                                    className="font-medium text-indigo-600 hover:text-indigo-500"
-                                                                                >
-                                                                                    Remove
-                                                                                </button>
+                                                                            <div className="ml-4 flex gap-3 flex-1 flex-col">
+                                                                                <div>
+                                                                                    <div className="flex flex-col gap-1 justify-between text-gray-900">
+                                                                                        <h3 className='font-bold'>
+                                                                                            <a href={product.href}>{product.title}</a>
+                                                                                        </h3>
+                                                                                        <p className="self-end font-medium">$ {product.price}</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div className="flex flex-1 items-end justify-between text-sm">
+
+                                                                                    <div className="flex">
+                                                                                        <button
+                                                                                            type="button"
+                                                                                            className="font-medium text-indigo-500 hover:text-indigo-500"
+                                                                                        >
+                                                                                            Remove
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            )) : (
+                                                                        </li>))
+                                                                }
+                                                            </ul>
+                                                            : (
                                                                 <div className="flex flex-1 items-end justify-between text-sm">
-                                                                    <p className="text-gray-500">Cart Empty</p>
+                                                                    <p className="text-center text-xl font-medium text-gray-500">Cart Empty</p>
                                                                 </div>
                                                             )}
-                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
@@ -340,7 +350,6 @@ const NavBar = () => {
                                                 </div>
                                                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                                                     <p>
-                                                        or
                                                         <button
                                                             type="button"
                                                             className="font-medium text-indigo-600 hover:text-indigo-500"

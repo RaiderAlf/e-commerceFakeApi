@@ -22,7 +22,7 @@ function rootReducer(state = initialState, action) {
                 dogs: action.payload
             }
 
-        case 'ADD_CART_PRODUCTS':
+        case 'REMOVE_CART_PRODUCTS':
             return {
                 ...state,
                 cartProducts: action.payload
