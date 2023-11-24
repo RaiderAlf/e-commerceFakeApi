@@ -116,11 +116,11 @@ const NavBar = () => {
                                     {navigation.pages.map((page) => (
 
                                         <div key={page.name} className="flow-root">
-                                            <a href={page.href} onClick={page.name == "All Products" ?
+                                            <a onClick={page.name == "All Products" ?
                                                 () => handleAllProducts() :
                                                 () => handleFilter(page.name.toLowerCase())
                                             }
-                                                className="-m-2 block p-2 font-medium text-gray-900">
+                                                className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer">
                                                 {page.name}
                                             </a>
                                         </div>
@@ -134,9 +134,9 @@ const NavBar = () => {
                                         </Link>
                                     </div>
                                     <div className="flow-root">
-                                        <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
+                                        <Link to="/create" href="#" className="-m-2 block p-2 font-medium text-gray-900">
                                             Create account
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
 
@@ -195,8 +195,7 @@ const NavBar = () => {
                                                     () => handleFilter(page.name.toLowerCase())
                                             }
                                             key={page.name}
-                                            href={page.href}
-                                            className="flex items-center text-sm font-medium text-slate-500 hover:text-slate-900 hover:underline "
+                                            className="flex items-center text-sm font-medium text-slate-500 hover:text-slate-900 cursor-pointer hover:underline "
                                         >
                                             {page.name}
                                         </a>
@@ -210,9 +209,9 @@ const NavBar = () => {
                                         Sign in
                                     </Link>
                                     <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                                    <a href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
+                                    <Link to="/create" href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
                                         Create account
-                                    </a>
+                                    </Link>
                                 </div>
 
                                 <div className="hidden lg:ml-8 lg:flex ">

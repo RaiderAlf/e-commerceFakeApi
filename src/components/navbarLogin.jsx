@@ -57,20 +57,20 @@ const NavBarLogin = () => {
 
                                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                                     <div className="flow-root">
-                                        <Link to='/signin' href="#" className="-m-2 block p-2 font-medium text-gray-900">
+                                        <Link to='/signin' className="-m-2 block p-2 font-medium text-gray-900">
                                             Enter Guess
                                         </Link>
                                     </div>
                                     < hr />
                                     <div className="flow-root">
-                                        <Link to='/signin' href="#" className="-m-2 block p-2 font-medium text-gray-900">
+                                        <Link to='/signin' className="-m-2 block p-2 font-medium text-gray-900">
                                             Sign in
                                         </Link>
                                     </div>
                                     <div className="flow-root">
-                                        <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
-                                            Create account
-                                        </a>
+                                        <Link to='/create' className="-m-2 block p-2 font-medium text-gray-900">
+                                            Create Account
+                                        </Link>
                                     </div>
                                     < hr />
                                 </div>
@@ -112,17 +112,17 @@ const NavBarLogin = () => {
 
                             <div className="ml-auto flex items-center">
                                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                                    <Link to='/' href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
+                                    <Link to='/' className="text-sm font-medium text-slate-500 hover:text-slate-900">
                                         Enter Guess
                                     </Link>
                                     <span className="h-6 w-px bg-gray-400" aria-hidden="true" />
-                                    <Link to='/signin' href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
+                                    <Link to='/signin' className="text-sm font-medium text-slate-500 hover:text-slate-900">
                                         Sign in
                                     </Link>
                                     <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                                    <a href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
-                                        Create account
-                                    </a>
+                                    <Link to='/create' className="text-sm font-medium text-slate-500 hover:text-slate-900">
+                                        Create Account
+                                    </Link>
                                 </div>
                             </div>
                         </div>

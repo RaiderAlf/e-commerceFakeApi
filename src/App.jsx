@@ -5,6 +5,7 @@ import Home from './components/home'
 //STYLES
 import './App.css'
 import Signin from './components/signin'
+import CreateAccount from './components/createAccount'
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/signin' element={<Signin />} />
+      <Route path='/create' element={<CreateAccount />} />
     </Routes>
   )
 }

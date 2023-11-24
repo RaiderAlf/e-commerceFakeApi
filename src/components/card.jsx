@@ -150,7 +150,7 @@ const Card = (product) => {
                     </div>
                 </Dialog>
             </Transition>
-            <div key={product.id} className="group transition ease-in duration-200 cursor-pointer p-2 flex rounded border border-gray-100 flex-col justify-center items-center hover:bg-black/5 hover:underline">
+            <div key={product.id} className="group transition ease-in duration-150 cursor-pointer p-2 flex rounded border border-gray-100/50 flex-col justify-center items-center hover:underline [box-shadow:_0_0_10px_rgb(0_0_0_/_10%)] hover:[box-shadow:_0_0_10px_rgb(0_0_0_/_40%)]">
                 <h3 className="mt-4 text-center text-sm font-medium text-gray-700">{product.title}</h3>
                 <div className="flex flex-col justify-center items-center aspect-h-1 h-56 aspect-w-1 w-full overflow-hidden rounded-lg xl:aspect-h-8 xl:aspect-w-7" onClick={openModal}>
                     <img
