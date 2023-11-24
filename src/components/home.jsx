@@ -23,10 +23,6 @@ const Home = () => {
 
     const position = Math.floor(Math.random() * allProducts.length);
 
-    console.log(allProducts[1]?.image)
-
-
-
     return (
         <>
             <NavBar />

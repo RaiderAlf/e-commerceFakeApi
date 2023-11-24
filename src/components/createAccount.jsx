@@ -24,7 +24,6 @@ const CreateAccount = () => {
 
         axios.post('https://microservices-api.onrender.com/register', inputForm)
             .then(data => dispatch(addUser(data.data)), navigate('/'))
-            .catch(error => console.error("ERROR!", error))
 
     };
 

@@ -24,7 +24,6 @@ const Signin = () => {
 
         axios.post('https://microservices-api.onrender.com/signin', inputForm)
             .then(data => dispatch(addUser(data.data)), navigate('/'))
-            .catch(error => console.error("ERROR!", error))
 
     };
 

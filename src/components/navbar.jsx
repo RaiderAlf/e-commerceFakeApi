@@ -33,8 +33,6 @@ const NavBar = () => {
 
     let user = useSelector(state => state.user)
 
-    console.log(user)
-
     let result = 0;
 
     if (products.length > 0) {
