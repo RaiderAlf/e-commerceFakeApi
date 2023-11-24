@@ -1,9 +1,31 @@
+//DEPENDENCIES
+import axios from "axios";
 //HOOKS
 import { useState } from "react";
+import { useDispatch } from 'react-redux'
+import { useNavigate } from "react-router-dom";
 //COMPONENTS
 import NavBarLogin from "./navbarLogin"
+import { addUser, removeUser } from "../redux/actions";
 
 const CreateAccount = () => {
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const handleSubmit = (e) => {
+
+        console.log(inputForm, file)
+
+        e.preventDefault();
+
+        dispatch(removeUser())
+
+        axios.post('http://localhost:3001/register', inputForm)
+            .then(data => dispatch(addUser(data.data)), navigate('/'))
+            .catch(error => console.error("ERROR!", error))
+
+    };
 
     const [seePass, setSeePass] = useState(false)
 
@@ -34,6 +56,7 @@ const CreateAccount = () => {
     })
 
     const handlerForm = (e) => {
+        console.log(file)
         setInputForm({
             ...inputForm,
             [e.target.name]: e.target.value
@@ -109,7 +132,7 @@ const CreateAccount = () => {
                 <br />
 
                 {
-                    inputForm.email !== "" && inputForm.password !== "" && inputForm.repeatPassword !== "" && inputForm.firstname !== "" && inputForm.lastname !== "" && inputForm.avatar !== "" ? (<button type="submit" className="text-white bg-slate-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>) : (<button disabled type="submit" className="disabled text-slate-300 bg-slate-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>)
+                    inputForm.email !== "" && inputForm.password !== "" && inputForm.repeatPassword !== "" && inputForm.firstname !== "" && inputForm.lastname !== "" && inputForm.avatar !== "" ? (<button type="submit" onClick={e => handleSubmit(e)} className="text-white bg-slate-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>) : (<button disabled type="submit" className="disabled text-slate-300 bg-slate-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>)
                 }
 
             </form>

@@ -2,7 +2,7 @@ const initialState = {
     product: [],
     allProducts: [],
     cartProducts: [],
-    temperament: [],
+    user: [],
     detail: {}
 };
 
@@ -16,11 +16,29 @@ function rootReducer(state = initialState, action) {
                 allProducts: action.payload
             };
 
-        case 'GET_DOG_NAME':
+        case 'GET_USER':
             return {
                 ...state,
-                dogs: action.payload
+                user: action.payload
+            };
+
+        case 'ADD_USER':
+            return {
+                ...state,
+                user: action.payload
             }
+
+        case 'GET_CATEGORY_PRODUCT':
+            return {
+                ...state,
+                product: action.payload
+            };
+
+        case 'REMOVE_USER':
+            return {
+                ...state,
+                user: action.payload
+            };
 
         case 'REMOVE_CART_PRODUCTS':
             return {
@@ -28,11 +46,6 @@ function rootReducer(state = initialState, action) {
                 cartProducts: action.payload
             };
 
-        case 'GET_CATEGORY_PRODUCT':
-            return {
-                ...state,
-                product: action.payload
-            };
 
         default:
             return state;

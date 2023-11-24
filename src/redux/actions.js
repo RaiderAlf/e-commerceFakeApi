@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getProducts = () => async (dispatch) => {
     dispatch({
-        type: 'GET_DETAIL',
+        type: 'GET_PRODUCTS',
         payload: []
     });
     await axios.get("https://fakestoreapi.com/products")
@@ -31,6 +31,20 @@ export const getCategoryProduct = (category) => async (dispatch) => {
         });
 };
 
+export const addUser = (user) => (dispatch) => {
+    dispatch({
+        type: 'ADD_USER',
+        payload: user.data
+    })
+}
+
+export const removeUser = () => (dispatch) => {
+    dispatch({
+        type: 'REMOVE_USER',
+        payload: []
+    })
+}
+
 export const removeCartProducts = () => (dispatch) => {
 
     dispatch({
@@ -39,13 +53,6 @@ export const removeCartProducts = () => (dispatch) => {
     })
 }
 
-export function filterCreated(payload) {
-    return {
-        type: 'FILTER_CREATED',
-        payload
-    };
-
-}
 
 export function orderByName(payload) {
     return {

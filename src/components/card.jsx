@@ -8,6 +8,7 @@ import { Fragment, useState } from "react"
 const Card = (product) => {
 
     const products = useSelector(state => state.cartProducts)
+    let user = useSelector(state => state.user)
 
     const handleCart = () => {
         products.push(product)
@@ -112,7 +113,7 @@ const Card = (product) => {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="w-full flex flex-col justify-center items-center max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                                <Dialog.Panel className="w-full flex flex-col justify-center items-center max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all [box-shadow:_0_0_15px_rgb(0_0_0_/_70%)]">
                                     <button className='bg-white hover:bg-gray-100 text-gray-800 font-semibold p-2' onClick={closeModal} >X</button>
                                     <Dialog.Title
                                         as="h3"
@@ -138,9 +139,15 @@ const Card = (product) => {
                                             <p className="ms-2 text-sm font-bold text-gray-900">{product.rating.rate}</p>
                                             <span className="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400"></span>
                                             <a href="#" className="text-sm font-medium text-gray-900 underline hover:no-underline">{product.rating.count} reviews</a>
-                                            <button onClick={() => handleCart(product)} className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border border-gray-200 focus:outline-none">
-                                                Add to cart
-                                            </button>
+                                            <span className="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400"></span>
+                                            {
+                                                user.firstname && (
+                                                    <button onClick={() => handleCart(product)} className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border border-gray-200 focus:outline-none">
+                                                        Add to cart
+                                                    </button>
+                                                )
+                                            }
+
                                         </div>
 
                                     </div>
@@ -150,7 +157,7 @@ const Card = (product) => {
                     </div>
                 </Dialog>
             </Transition>
-            <div key={product.id} className="group transition ease-in duration-150 cursor-pointer p-2 flex rounded border border-gray-100/50 flex-col justify-center items-center hover:underline [box-shadow:_0_0_10px_rgb(0_0_0_/_10%)] hover:[box-shadow:_0_0_10px_rgb(0_0_0_/_40%)]">
+            <div key={product.id} className="group transition ease-in duration-150 cursor-pointer p-2 flex rounded border border-gray-100/50 flex-col justify-center items-center hover:underline [box-shadow:_0_0_10px_rgb(0_0_0_/_40%)] hover:shadow-[inset_0_0_10px_rgb(0_0_0_/_30%)]">
                 <h3 className="mt-4 text-center text-sm font-medium text-gray-700">{product.title}</h3>
                 <div className="flex flex-col justify-center items-center aspect-h-1 h-56 aspect-w-1 w-full overflow-hidden rounded-lg xl:aspect-h-8 xl:aspect-w-7" onClick={openModal}>
                     <img
@@ -160,9 +167,14 @@ const Card = (product) => {
                     />
                 </div>
                 <p className="mt-1 text-lg p-4 font-medium text-gray-900">$ {product.price}</p>
-                <button onClick={() => handleCart(product)} className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border border-gray-200 focus:outline-none">
-                    Add to cart
-                </button>
+                {
+                    user.firstname && (
+                        <button onClick={() => handleCart(product)} className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border border-gray-200 focus:outline-none">
+                            Add to cart
+                        </button>
+
+                    )
+                }
             </div>
         </>
     )
