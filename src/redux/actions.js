@@ -30,13 +30,6 @@ export const getCategoryProduct = (category) => async (dispatch) => {
         });
 };
 
-export const removeFromCart = (item) => {
-    return {
-        type: 'REMOVE_FROM_CART',
-        payload: item
-    }
-}
-
 export const addUser = (user) => (dispatch) => {
     dispatch({
         type: 'ADD_USER',

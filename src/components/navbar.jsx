@@ -6,7 +6,7 @@ import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outli
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 //ACTIONS
-import { getCategoryProduct, getProducts, removeCartProducts, removeUser, removeFromCart } from '../redux/actions'
+import { getCategoryProduct, getProducts, removeCartProducts, removeUser } from '../redux/actions'
 //ASSETS
 import LOGO from '../assets/LOGO.jpg'
 
@@ -39,10 +39,6 @@ const NavBar = () => {
         for (let i = 0; i < products.length; i++) {
             result = Math.round(products[i].price + result)
         }
-    }
-
-    const handlerRemoveItem = (item) => {
-        dispatch(removeFromCart(item))
     }
 
     const handlerCloseSession = () => {
@@ -463,7 +459,7 @@ const NavBar = () => {
                                                                                 <div className="flex flex-1 items-end justify-between text-sm">
 
                                                                                     <div className="flex">
-                                                                                        <button onClick={handlerRemoveItem(product)}
+                                                                                        <button
                                                                                             type="button"
                                                                                             className="font-medium text-indigo-500 hover:text-indigo-500"
                                                                                         >
