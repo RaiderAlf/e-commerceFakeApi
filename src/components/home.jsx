@@ -39,8 +39,8 @@ const Home = () => {
                     <section className="bg-white [box-shadow:_0_0_10px_rgb(0_0_0_/_40%)] rounded-lg">
                         <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
                             <div className="mr-auto place-self-center lg:col-span-7 p-2">
-                                <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, vel?</h1>
-                                <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente nulla laborum quo, mollitia atque perferendis nesciunt voluptatem labore earum molestias!</p>
+                                <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">Lorem ipsum dolor sit amet.</h1>
+                                <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto magnam porro, cum quod ea suscipit est maiores beatae impedit facilis tenetur harum in pariatur adipisci.</p>
 
                                 {
                                     user.firstname ? "" : (
