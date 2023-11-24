@@ -6,7 +6,7 @@ import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outli
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 //ACTIONS
-import { getCategoryProduct, getProducts, removeCartProducts, removeUser } from '../redux/actions'
+import { getCategoryProduct, getProducts, removeCartProducts, removeUser, removeFromCart } from '../redux/actions'
 //ASSETS
 import LOGO from '../assets/LOGO.jpg'
 
@@ -41,8 +41,8 @@ const NavBar = () => {
         }
     }
 
-    const handlerRemoveItem = (i) => {
-        products.splice(i, 1)
+    const handlerRemoveItem = (item) => {
+        dispatch(removeFromCart(item))
     }
 
     const handlerCloseSession = () => {
@@ -441,7 +441,7 @@ const NavBar = () => {
                                                                 <button className="font-medium text-xs text-indigo-500 hover:text-indigo-500" onClick={() => removeAllItems()} >Delete Cart</button>
                                                                 <hr />
                                                                 {
-                                                                    products.map((product, i) => (
+                                                                    products.map((product) => (
                                                                         <li key={product.id} className="flex py-6">
                                                                             <div className="h-24 w-28 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                                                                 <img
@@ -463,7 +463,7 @@ const NavBar = () => {
                                                                                 <div className="flex flex-1 items-end justify-between text-sm">
 
                                                                                     <div className="flex">
-                                                                                        <button onClick={handlerRemoveItem(i)}
+                                                                                        <button onClick={handlerRemoveItem(product.id)}
                                                                                             type="button"
                                                                                             className="font-medium text-indigo-500 hover:text-indigo-500"
                                                                                         >
