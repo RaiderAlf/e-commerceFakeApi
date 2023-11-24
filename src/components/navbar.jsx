@@ -463,7 +463,7 @@ const NavBar = () => {
                                                                                 <div className="flex flex-1 items-end justify-between text-sm">
 
                                                                                     <div className="flex">
-                                                                                        <button onClick={handlerRemoveItem(product.id)}
+                                                                                        <button onClick={handlerRemoveItem(product)}
                                                                                             type="button"
                                                                                             className="font-medium text-indigo-500 hover:text-indigo-500"
                                                                                         >
