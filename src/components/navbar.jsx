@@ -41,6 +41,10 @@ const NavBar = () => {
         }
     }
 
+    const handlerRemoveItem = (i) => {
+        products.splice(i, 1)
+    }
+
     const handlerCloseSession = () => {
         dispatch(removeUser())
     }
@@ -300,9 +304,9 @@ const NavBar = () => {
                                                                                     <li>
                                                                                         <a href="#" onClick={openModal} className="block px-4 py-2 hover:bg-gray-100">ShopCart</a>
                                                                                     </li>
-                                                                                    <li>
+                                                                                    {/* <li>
                                                                                         <a href="#" className="block px-4 py-2 hover:bg-gray-100">Settings</a>
-                                                                                    </li>
+                                                                                    </li> */}
                                                                                 </ul>
                                                                                 <div className="py-2">
                                                                                     <a href="#" onClick={openAlert} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign Out</a>
@@ -437,7 +441,7 @@ const NavBar = () => {
                                                                 <button className="font-medium text-xs text-indigo-500 hover:text-indigo-500" onClick={() => removeAllItems()} >Delete Cart</button>
                                                                 <hr />
                                                                 {
-                                                                    products.map((product) => (
+                                                                    products.map((product, i) => (
                                                                         <li key={product.id} className="flex py-6">
                                                                             <div className="h-24 w-28 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                                                                 <img
@@ -459,7 +463,7 @@ const NavBar = () => {
                                                                                 <div className="flex flex-1 items-end justify-between text-sm">
 
                                                                                     <div className="flex">
-                                                                                        <button
+                                                                                        <button onClick={handlerRemoveItem(i)}
                                                                                             type="button"
                                                                                             className="font-medium text-indigo-500 hover:text-indigo-500"
                                                                                         >
