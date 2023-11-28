@@ -65,7 +65,7 @@ const Card = (product) => {
                                 <Dialog.Panel onClick={closeAlert} className="w-fit flex flex-col items-center justify-center max-w-md text-blue-900 transform overflow-hidden rounded-2xl bg-slate-100 p-6 text-left align-middle shadow-xl transition-all" role="alert">
                                     <button
                                         type="button"
-                                        className="relative flex flex-col items-center justify-center gap-1 -m-2 p-2 text-blue-800 hover:text-black-500"
+                                        className="relative flex flex-col items-center justify-center gap-1 -m-2 p-2 text-slate-800 hover:text-black-500"
                                         onClick={closeAlert}
                                     >
                                         <span className="absolute -inset-0.5" />
@@ -129,7 +129,7 @@ const Card = (product) => {
                                                 className="h-80"
                                             />
                                         </div>
-                                        <p className="mt-1 text-center font-medium text-gray-900">Price: {product.price} $</p>
+                                        <p className="mt-1 text-center font-medium text-gray-900">Price: $ {product.price} </p>
                                         <p className="mt-1 text-center text-sm text-gray-900">$ {product.description}</p>
                                         <br />
                                         <div className="flex justify-between items-center">

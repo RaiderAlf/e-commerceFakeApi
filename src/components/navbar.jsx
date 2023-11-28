@@ -206,7 +206,7 @@ const NavBar = () => {
                             <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
                                 <div className="flex h-full space-x-8">
                                     {navigation.pages.map((page) => (
-                                        <a
+                                        <Link to='/'
                                             onClick={
                                                 page.name == "All Products" ?
                                                     () => handleAllProducts() :
@@ -216,7 +216,7 @@ const NavBar = () => {
                                             className="flex items-center text-sm font-medium text-slate-500 hover:text-slate-900 cursor-pointer hover:underline "
                                         >
                                             {page.name}
-                                        </a>
+                                        </Link>
                                     ))}
                                 </div>
                             </Popover.Group>
@@ -298,7 +298,7 @@ const NavBar = () => {
                                                                             <div id="dropdownDivider" className="z-10 bg-white divide-y divide-gray-200 rounded-lg shadow w-44">
                                                                                 <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownDividerButton">
                                                                                     <li>
-                                                                                        <a href="#" onClick={openModal} className="block px-4 py-2 hover:bg-gray-300">ShopCart</a>
+                                                                                        <a href="#" onClick={openModal} className="block px-4 py-2 hover:bg-gray-300">Shop Cart</a>
                                                                                     </li>
                                                                                     <li>
                                                                                         <Link to='/settings' className="block px-4 py-2 hover:bg-gray-300">Settings</Link >
@@ -416,7 +416,7 @@ const NavBar = () => {
                                         <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                                             <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                                                 <div className="flex items-start justify-between">
-                                                    <Dialog.Title className="text-lg font-medium text-gray-900">Shopping cart</Dialog.Title>
+                                                    <Dialog.Title className="text-lg font-medium text-gray-900">Shopping Cart</Dialog.Title>
                                                     <div className="ml-3 flex h-7 items-center">
                                                         <button
                                                             type="button"

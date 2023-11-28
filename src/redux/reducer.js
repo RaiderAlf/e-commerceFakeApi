@@ -46,7 +46,6 @@ function rootReducer(state = initialState, action) {
                 cartProducts: action.payload
             };
 
-
         default:
             return state;
     }
