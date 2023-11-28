@@ -192,14 +192,14 @@ const NavBar = () => {
 
                             {/* Logo */}
                             <div className="ml-4 flex lg:ml-0">
-                                <div >
+                                <Link to='/' >
                                     <span className="sr-only">Your Company</span>
                                     <img
                                         className="h-12 rounded w-auto"
                                         src={LOGO}
                                         alt="YOUR"
                                     />
-                                </div>
+                                </Link>
                             </div>
 
                             {/* Flyout menus */}
@@ -295,17 +295,17 @@ const NavBar = () => {
                                                                     >
                                                                         <Dialog.Panel onClick={closeDropdown} className="w-fit flex flex-col items-center justify-center transform rounded-2xl p-6 text-left align-middle shadow-xl transition-all" role="alert">
 
-                                                                            <div id="dropdownDivider" className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                                                                            <div id="dropdownDivider" className="z-10 bg-white divide-y divide-gray-200 rounded-lg shadow w-44">
                                                                                 <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownDividerButton">
                                                                                     <li>
-                                                                                        <a href="#" onClick={openModal} className="block px-4 py-2 hover:bg-gray-100">ShopCart</a>
+                                                                                        <a href="#" onClick={openModal} className="block px-4 py-2 hover:bg-gray-300">ShopCart</a>
                                                                                     </li>
-                                                                                    {/* <li>
-                                                                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100">Settings</a>
-                                                                                    </li> */}
+                                                                                    <li>
+                                                                                        <Link to='/settings' className="block px-4 py-2 hover:bg-gray-300">Settings</Link >
+                                                                                    </li>
                                                                                 </ul>
                                                                                 <div className="py-2">
-                                                                                    <a href="#" onClick={openAlert} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign Out</a>
+                                                                                    <a href="#" onClick={openAlert} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-300">Sign Out</a>
                                                                                 </div>
                                                                             </div>
 

@@ -6,6 +6,7 @@ import Home from './components/home'
 import './App.css'
 import Signin from './components/signin'
 import CreateAccount from './components/createAccount'
+import Settings from './components/settings'
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path='/' element={<Home />} />
       <Route path='/signin' element={<Signin />} />
       <Route path='/create' element={<CreateAccount />} />
+      <Route path='/settings' element={<Settings />} />
     </Routes>
   )
 }
