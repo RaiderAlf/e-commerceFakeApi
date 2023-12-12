@@ -157,7 +157,7 @@ const Card = (product) => {
                     </div>
                 </Dialog>
             </Transition>
-            <div key={product.id} className="group transition ease-in duration-150 cursor-pointer p-2 flex rounded border border-gray-100/50 flex-col justify-center items-center hover:underline [box-shadow:_0_0_10px_rgb(0_0_0_/_40%)] hover:shadow-[inset_0_0_10px_rgb(0_0_0_/_30%)]">
+            <div key={product.id} className="group bg-white transition ease-in duration-150 cursor-pointer p-2 flex rounded border border-gray-100/50 flex-col justify-center items-center [box-shadow:_0_0_10px_rgb(0_0_0_/_40%)] hover:shadow-[0_0_10px_rgb(0_0_0_/_90%)]">
                 <h3 className="mt-4 text-center text-sm font-medium text-gray-700">{product.title}</h3>
                 <div className="flex flex-col justify-center items-center aspect-h-1 h-56 aspect-w-1 w-full overflow-hidden rounded-lg xl:aspect-h-8 xl:aspect-w-7" onClick={openModal}>
                     <img
@@ -166,7 +166,7 @@ const Card = (product) => {
                         className="w-36 rounded-lg p-1"
                     />
                 </div>
-                <p className="mt-1 text-lg p-4 font-medium text-gray-900">$ {product.price}</p>
+                <p className="mt-1 text-lg p-4 font-medium text-gray-700">$ {product.price}</p>
                 {
                     user.firstname && (
                         <button onClick={() => handleCart(product)} className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border border-gray-200 focus:outline-none">

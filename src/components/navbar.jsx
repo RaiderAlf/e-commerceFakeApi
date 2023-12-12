@@ -175,7 +175,7 @@ const NavBar = () => {
                 </Dialog>
             </Transition.Root>
 
-            <header className="fixed top-0 w-full bg-slate-100">
+            <header className="fixed top-0 w-full bg-slate-100 [box-shadow:_0_0_10px_rgb(0_0_0_/_40%)]">
 
                 <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="border-b border-gray-200">
