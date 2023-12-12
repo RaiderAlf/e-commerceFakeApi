@@ -49,7 +49,7 @@ const Home = () => {
                                                 Create Account
                                             </Link>
                                             <span className="p-4 text-slate-500 text-base font-medium" >OR</span>
-                                            <Link to='/create' href="#" className="inline-flex items-center bg-slate-300 justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100">
+                                            <Link to='/signin' href="#" className="inline-flex items-center bg-slate-300 justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100">
                                                 Sign In
                                             </Link>
                                         </div>
