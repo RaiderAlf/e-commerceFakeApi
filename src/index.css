@@ -10,14 +10,15 @@ body {
 
 /* HTML: <div class="loader"></div> */
 .loader {
-    width: 80px;
-    height: 20px;
+    margin-top: 3rem;
+    width: 200px;
+    height: 50px;
     color: #b8b2e6;
     background:
-        radial-gradient(farthest-side, currentColor 98%, #0000) left /20px 20px,
-        radial-gradient(farthest-side, currentColor 98%, #0000) right /20px 20px,
-        radial-gradient(farthest-side, #000 98%, #0000) center/5px 5px,
-        linear-gradient(currentColor 0 0) center/100% 2px;
+        radial-gradient(farthest-side, currentColor 98%, #0000) left /50px 50px,
+        radial-gradient(farthest-side, currentColor 98%, #0000) right /50px 50px,
+        radial-gradient(farthest-side, #000 98%, #0000) center/15px 15px,
+        linear-gradient(currentColor 0 0) center/100% 5px;
     background-repeat: no-repeat;
     animation: l9 1s cubic-bezier(.5, -150, .5, 150) infinite;
 }
