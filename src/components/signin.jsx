@@ -45,9 +45,9 @@ const Signin = () => {
             .then(data => {
                 if (data.data) {
 
+                    setLoader(false)
                     dispatch(addUser(data.data))
                     navigate('/')
-                    setLoader(false)
                 }
             })
             .catch(error => {

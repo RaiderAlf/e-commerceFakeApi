@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useDispatch } from 'react-redux'
 import { useNavigate, Link } from "react-router-dom";
 //ACTIONS
-import { addUser, removeUser } from "../redux/actions";
+import { removeUser } from "../redux/actions";
 //COMPONENTS
 import NavBar from "./navbar";
 
@@ -23,8 +23,7 @@ const Settings = () => {
 
         dispatch(removeUser())
 
-        axios.post('https://microservices-api.onrender.com/register', inputForm)
-            .then(data => dispatch(addUser(data.data)), navigate('/'))
+        navigate('/')
 
     };
 
@@ -45,7 +44,6 @@ const Settings = () => {
     })
 
     const handlerForm = (e) => {
-        console.log(file)
         setInputForm({
             ...inputForm,
             [e.target.name]: e.target.value
@@ -55,8 +53,8 @@ const Settings = () => {
     return (
         <>
             <NavBar />
-            <form className="max-w-sm mx-auto my-28">
-                <h1 className="text-slate-500 text-lg text-center font-medium my-8 [text-shadow:_0_5px_5px_rgb(0_0_0_/_50%)]">
+            <form className="max-w-sm mx-auto m-28 [box-shadow:_0_0_5px_rgb(0_0_0_/_60%)] backdrop-blur-xl bg-white/90 rounded px-8 py-6">
+                <h1 className="text-slate-600 text-lg border text-center font-medium my-8 backdrop-blur-3xl rounded-lg [box-shadow:_0_0_5px_rgb(0_0_0_/_50%)]">
                     Settings User
                 </h1>
                 <div className="grid md:grid-cols-2 md:gap-6">
@@ -107,8 +105,14 @@ const Settings = () => {
                         </span>
                     </Link>
 
-                    <button type="submit" onClick={e => handleSubmit(e)} className="text-white bg-slate-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
 
+
+                    {
+                        inputForm.firstname !== "" && inputForm.lastname !== "" ?
+                            (<button type="submit" onClick={e => handleSubmit(e)} className="text-white bg-slate-600 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>)
+                            :
+                            (<button disabled type="submit" className="disabledtext-white bg-slate-300  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 text-slate-200 py-2.5 text-center">Submit</button>)
+                    }
 
                 </div>
             </form>
