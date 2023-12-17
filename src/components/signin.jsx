@@ -171,11 +171,10 @@ const Signin = () => {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel onClick={closeAlert} className="w-fit flex flex-col items-center justify-center max-w-md text-blue-900 transform overflow-hidden rounded-2xl bg-gray-400 p-6 text-left align-middle shadow-xl transition-all" role="alert">
+                                <Dialog.Panel className="w-fit flex flex-col items-center justify-center max-w-md text-blue-900 transform overflow-hidden rounded-2xl bg-gray-400 p-6 text-left align-middle shadow-xl transition-all" role="alert">
                                     <button
                                         type="button"
                                         className="flex flex-col items-center justify-center gap-1 text-slate-800 hover:text-black-500"
-                                        onClick={closeAlert}
                                     >
                                         <span className="absolute -inset-0.5" />
                                         <span className="sr-only">Close panel</span>
