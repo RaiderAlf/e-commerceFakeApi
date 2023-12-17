@@ -40,6 +40,20 @@ function rootReducer(state = initialState, action) {
                 user: action.payload
             };
 
+        case 'ADD_CART_PRODUCT':
+            return {
+                ...state,
+                cartProducts: [...state.cartProducts, action.payload]
+            }
+
+        case 'REMOVE_PRODUCT':
+            return {
+                ...state,
+                cartProducts: state.cartProducts.filter(
+                    product => product.id !== action.payload
+                )
+            }
+
         case 'REMOVE_CART_PRODUCTS':
             return {
                 ...state,

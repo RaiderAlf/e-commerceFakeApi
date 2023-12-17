@@ -6,7 +6,7 @@ import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outli
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 //ACTIONS
-import { getCategoryProduct, getProducts, removeCartProducts, removeUser } from '../redux/actions'
+import { getCategoryProduct, getProducts, removeProduct, removeCartProducts, removeUser } from '../redux/actions'
 //ASSETS
 import LOGO from '../assets/LOGO.jpg'
 
@@ -47,6 +47,10 @@ const NavBar = () => {
 
     const removeAllItems = () => {
         dispatch(removeCartProducts())
+    }
+
+    const removeOneProduct = (id) => {
+        dispatch(removeProduct(id))
     }
 
 
@@ -341,7 +345,7 @@ const NavBar = () => {
                                                                         leaveFrom="opacity-100 scale-100"
                                                                         leaveTo="opacity-0 scale-95"
                                                                     >
-                                                                        <Dialog.Panel onClick={closeAlert} className="w-fit flex flex-col bg-slate-200 items-center justify-center max-w-md text-blue-900 transform overflow-hidden rounded-2xl bg-slate-100 p-6 text-left align-middle shadow-xl transition-all" role="alert">
+                                                                        <Dialog.Panel onClick={closeAlert} className="w-fit flex flex-col items-center justify-center max-w-md text-blue-900 transform overflow-hidden rounded-2xl bg-slate-100 p-6 text-left align-middle shadow-xl transition-all" role="alert">
                                                                             <div className='flex flex-col gap-8 items-center justify-center '>
                                                                                 <h2 className='font-semibold ' >Are you Sure?</h2>
                                                                                 <div className='flex gap-8 items-center justify-center' >
@@ -431,7 +435,7 @@ const NavBar = () => {
                                                 </div>
 
                                                 <div className="mt-8">
-                                                    <div className="flow-root grid place-content-center">
+                                                    <div className="flow-root place-content-center">
                                                         {products.length > 0 ?
                                                             <ul role="list" className="-my-6 divide-y divide-gray-100">
                                                                 <button className="font-medium text-xs text-indigo-500 hover:text-indigo-500" onClick={() => removeAllItems()} >Delete Cart</button>
@@ -460,6 +464,7 @@ const NavBar = () => {
 
                                                                                     <div className="flex">
                                                                                         <button
+                                                                                            onClick={() => removeOneProduct(product.id)}
                                                                                             type="button"
                                                                                             className="font-medium text-indigo-500 hover:text-indigo-500"
                                                                                         >

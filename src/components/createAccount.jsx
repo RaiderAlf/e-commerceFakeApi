@@ -203,11 +203,11 @@ const CreateAccount = () => {
                 <div className="flex items-center justify-center w-full">
 
                     {file ?
-                        (<div className="object-scale-down flex flex-col items-center justify-center w-40 h-fit border-2 border-gray-500 border rounded-lg cursor-pointer bg-slate-200" >
+                        (<div className="object-scale-down flex flex-col items-center justify-center w-40 h-fit border-2 border-gray-500 rounded-lg cursor-pointer bg-slate-200" >
                             <button onClick={delFile} type="button" className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-slate-500">X</button>
                             <img className="object-scale-down flex flex-col items-center justify-center w-24 h-32 rounded-lg shadow-slate-700" src={file} alt="avatar" />
                         </div>) :
-                        (<label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-400 bg-slate-400 border-dashed rounded-lg cursor-pointer bg-slate-50">
+                        (<label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-400 border-dashed rounded-lg cursor-pointer bg-slate-50">
                             <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                 <p className="mb-2 text-sm text-slate-700"><span className="font-semibold">Optional</span></p>
                                 <svg className="w-4 h-4 mb-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">

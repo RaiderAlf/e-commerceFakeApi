@@ -73,7 +73,7 @@ const Settings = () => {
                 <div className="flex items-center justify-center w-full">
 
                     {file ?
-                        (<div className="object-scale-down flex flex-col items-center justify-center w-40 h-fit border-2 border-gray-500 border rounded-lg cursor-pointer bg-slate-200" >
+                        (<div className="object-scale-down flex flex-col items-center justify-center w-40 h-fit border-gray-500 border rounded-lg cursor-pointer bg-slate-200" >
                             <button onClick={delFile} type="button" className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-slate-500">X</button>
                             <img className="object-scale-down flex flex-col items-center justify-center w-24 h-32 rounded-lg shadow-slate-700" src={file} alt="avatar" />
                         </div>) :

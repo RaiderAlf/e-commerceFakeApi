@@ -44,6 +44,20 @@ export const removeUser = () => (dispatch) => {
     })
 }
 
+export const addCartProducts = (product) => (dispatch) => {
+    dispatch({
+        type: 'ADD_CART_PRODUCT',
+        payload: product
+    })
+}
+
+export const removeProduct = (productId) => {
+    return {
+        type: 'REMOVE_PRODUCT',
+        payload: productId
+    }
+}
+
 export const removeCartProducts = () => (dispatch) => {
 
     dispatch({
