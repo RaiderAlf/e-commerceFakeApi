@@ -22,6 +22,8 @@ const Signin = () => {
 
     let [alertOpen, setAlertOpen] = useState(false)
 
+    const [loader, setLoader] = useState(false)
+
     function closeAlert() {
         setAlertOpen(false)
     }
@@ -35,6 +37,8 @@ const Signin = () => {
 
         e.preventDefault();
 
+        setLoader(true)
+
         dispatch(removeUser())
 
         axiosInstance.post('/signin', inputForm)
@@ -43,10 +47,11 @@ const Signin = () => {
 
                     dispatch(addUser(data.data))
                     navigate('/')
-
+                    setLoader(false)
                 }
             })
             .catch(error => {
+                setLoader(false)
                 setErrState({
                     message: error.response.data.message
                 })
@@ -131,6 +136,56 @@ const Signin = () => {
                                         <div className='flex flex-col items-center justify-center gap-1'>
                                             <span className="font-medium text-red-700">Error</span>
                                             <span className="font-bold text-red-900">{errState.message}</span>
+                                        </div>
+                                    </div>
+
+                                </Dialog.Panel>
+                            </Transition.Child>
+                        </div>
+                    </div>
+                </Dialog>
+            </Transition>
+
+            <Transition appear show={loader} as={Fragment}>
+                <Dialog as="div" className="fixed inset-0" onClose={closeAlert}>
+                    <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0"
+                        enterTo="opacity-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100"
+                        leaveTo="opacity-0"
+                    >
+                        <div className="fixed inset-0 bg-black/70" />
+                    </Transition.Child>
+
+                    <div className="fixed inset-0 ">
+                        <div className="flex min-h-full items-center justify-center p-4 text-center">
+                            <Transition.Child
+                                as={Fragment}
+                                enter="ease-out duration-300"
+                                enterFrom="opacity-0 scale-95"
+                                enterTo="opacity-100 scale-100"
+                                leave="ease-in duration-200"
+                                leaveFrom="opacity-100 scale-100"
+                                leaveTo="opacity-0 scale-95"
+                            >
+                                <Dialog.Panel onClick={closeAlert} className="w-fit flex flex-col items-center justify-center max-w-md text-blue-900 transform overflow-hidden rounded-2xl bg-gray-400 p-6 text-left align-middle shadow-xl transition-all" role="alert">
+                                    <button
+                                        type="button"
+                                        className="flex flex-col items-center justify-center gap-1 text-slate-800 hover:text-black-500"
+                                        onClick={closeAlert}
+                                    >
+                                        <span className="absolute -inset-0.5" />
+                                        <span className="sr-only">Close panel</span>
+                                    </button>
+                                    <div className='flex items-center justify-center'>
+                                        <span className="sr-only text-red">Info</span>
+                                        <div className='flex flex-col items-center justify-center gap-1'>
+                                            <span className="font-medium text-blue-800">Please Wait</span>
+                                            <div className="loader1"></div>
+                                            <span className="font-bold text-blue-900">Loading User</span>
                                         </div>
                                     </div>
 
