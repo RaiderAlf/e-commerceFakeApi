@@ -1,8 +1,9 @@
 //DEPENDENCIES
-import { Fragment, useState } from 'react'
+import Cookies from 'js-cookie';
 import { Dialog, Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 //HOOKS
+import { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 //ACTIONS
@@ -43,6 +44,7 @@ const NavBar = () => {
 
     const handlerCloseSession = () => {
         dispatch(removeUser())
+        Cookies.remove('user');
     }
 
     const removeAllItems = () => {

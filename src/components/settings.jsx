@@ -1,5 +1,5 @@
 //DEPENDENCIES
-import axios from "axios";
+// import axios from "axios";
 //HOOKS
 import { useState } from "react";
 import { useDispatch } from 'react-redux'
@@ -16,8 +16,6 @@ const Settings = () => {
     const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
-
-        console.log(inputForm, file)
 
         e.preventDefault();
 

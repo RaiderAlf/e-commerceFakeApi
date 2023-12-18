@@ -1,25 +1,51 @@
+//DEPENDENCIES
+import Cookies from 'js-cookie';
 //HOOKS
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 //ACTIONS
-import { getProducts } from "../redux/actions"
+import { addUser, getProducts } from "../redux/actions"
 //COMPONENTS
+import { Link } from "react-router-dom";
 import Card from "./card";
 import NavBar from "./navbar";
 import Footer from "./footer";
-import { Link } from "react-router-dom";
 
 const Home = () => {
 
+    let user = useSelector(state => state.user)
+
     const dispatch = useDispatch();
 
-    let user = useSelector(state => state.user)
+    const [showBanner, setShowBanner] = useState(!Cookies.get('cookiesAccepted'));
+
+    const acceptCookies = () => {
+        Cookies.set('cookiesAccepted', 'true');
+        if (Cookies.get('user')) {
+            const actualUser = JSON.parse(Cookies.get('user'))
+            dispatch(addUser(actualUser))
+        }
+        setShowBanner(false);
+    };
+
+    // if (!user && Cookies.get('user')) {
+    //     const actualUser = JSON.parse(Cookies.get('user'))
+    //     dispatch(addUser(actualUser))
+    // }
+
+    window.onload = () => {
+        if (Cookies.get('user')) {
+            const actualUser = JSON.parse(Cookies.get('user'))
+            dispatch(addUser(actualUser))
+        }
+    }
 
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch])
 
     const allProducts = useSelector(state => state.product)
+    user = useSelector(state => state.user)
 
     const position = Math.floor(Math.random() * allProducts.length);
 
@@ -92,6 +118,16 @@ const Home = () => {
 
                 </div>
             </div>
+            {
+                showBanner && (
+                    <div className="fixed bottom-0 left-0 right-0 bg-blue-500 text-white p-4 flex items-center justify-between">
+                        <div className="flex-1">
+                            <p>This website uses cookies to enhance your experience. By continuing to browse, you agree to our use of cookies.</p>
+                        </div>
+                        <button onClick={acceptCookies} className="ml-4 bg-white text-blue-500 px-4 py-2 rounded">Accept</button>
+                    </div>
+                )
+            }
             <Footer />
         </>
     )

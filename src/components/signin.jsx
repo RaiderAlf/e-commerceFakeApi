@@ -1,5 +1,6 @@
 //DEPENDENCIES
 import axios from "axios";
+import Cookies from 'js-cookie';
 //HOOKS
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
@@ -44,7 +45,7 @@ const Signin = () => {
         axiosInstance.post('/signin', inputForm)
             .then(data => {
                 if (data.data) {
-
+                    Cookies.set('user', JSON.stringify(data.data))
                     setLoader(false)
                     dispatch(addUser(data.data))
                     navigate('/')
