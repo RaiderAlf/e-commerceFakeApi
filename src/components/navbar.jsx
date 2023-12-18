@@ -302,6 +302,7 @@ const NavBar = () => {
                                                                         <Dialog.Panel onClick={closeDropdown} className="w-fit flex flex-col items-center justify-center transform rounded-2xl p-6 text-left align-middle shadow-xl transition-all" role="alert">
 
                                                                             <div id="dropdownDivider" className="z-10 bg-white divide-y divide-gray-200 rounded-lg shadow w-44">
+                                                                                <span className='bg-slate-200 rounded-t-xl block px-10 py-2 text-sm text-gray-500' aria-labelledby="dropdownDividerButton">{user.firstname} {user.lastname}</span>
                                                                                 <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownDividerButton">
                                                                                     <li>
                                                                                         <a href="#" onClick={openModal} className="block px-4 py-2 hover:bg-gray-300">Shop Cart</a>
