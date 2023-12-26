@@ -31,6 +31,9 @@ const Card = (product) => {
 
     function openAlert() {
         setAlertOpen(true)
+        setTimeout(() => {
+            closeAlert()
+        }, 750);
     }
 
     function closeModal() {
@@ -44,7 +47,7 @@ const Card = (product) => {
     return (
         <>
             <Transition appear show={alertOpen} as={Fragment}>
-                <Dialog as="div" className="fixed inset-0" onClose={closeAlert}>
+                <Dialog as="div" className="fixed bottom-4 grid place-content-center mx-12" onClose={closeAlert}>
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -54,10 +57,10 @@ const Card = (product) => {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <div className="fixed inset-0 bg-black/50" />
+                        <div className="fixed bottom-1 right-3" />
                     </Transition.Child>
 
-                    <div className="fixed inset-0 ">
+                    <div className="relative bottom-1 right-3 ">
                         <div className="flex min-h-full items-center justify-center p-4 text-center">
                             <Transition.Child
                                 as={Fragment}
@@ -68,22 +71,14 @@ const Card = (product) => {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel onClick={closeAlert} className="w-fit flex flex-col items-center justify-center max-w-md text-blue-900 transform overflow-hidden rounded-2xl bg-slate-100 p-6 text-left align-middle shadow-xl transition-all" role="alert">
-                                    <button
-                                        type="button"
-                                        className="relative flex flex-col items-center justify-center gap-1 -m-2 p-2 text-slate-800 hover:text-black-500"
-                                        onClick={closeAlert}
-                                    >
-                                        <span className="absolute -inset-0.5" />
-                                        <span className="sr-only">Close panel</span>
-                                        <svg className="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                                        </svg>
-                                    </button>
-                                    <div className='flex items-center justify-center'>
-                                        <span className="sr-only">Info</span>
-                                        <div className='flex flex-col items-center justify-center gap-1'>
-                                            <span className="font-medium">Alert!</span> Product added
+                                <Dialog.Panel onClick={closeAlert} className="" role="alert">
+                                    <div id="toast-success" className="flex items-center gap-2 w-full max-w-xs p-4 mb-4 border-1  text-gray-300 rounded-lg shadow bg-green-100" role="alert">
+                                        <div className="ms-3 drop-shadow-lg text-sm text-gray-800 font-normal">Item added to cart.</div>
+                                        <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-600 bg-green-500/50 rounded-lg ">
+                                            <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                            </svg>
+                                            <span className="sr-only">Check icon</span>
                                         </div>
                                     </div>
 

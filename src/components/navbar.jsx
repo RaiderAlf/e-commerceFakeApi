@@ -7,7 +7,7 @@ import { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 //ACTIONS
-import { getCategoryProduct, getProducts, removeProduct, removeCartProducts, removeUser } from '../redux/actions'
+import { getCategoryProduct, filterByName, getProducts, removeProduct, removeCartProducts, removeUser } from '../redux/actions'
 //ASSETS
 import LOGO from '../assets/LOGO.jpg'
 
@@ -31,6 +31,7 @@ const NavBar = () => {
     const dispatch = useDispatch()
 
     const products = useSelector(state => state.cartProducts)
+    const allProducts = useSelector(state => state.product)
 
     let user = useSelector(state => state.user)
 
@@ -97,6 +98,20 @@ const NavBar = () => {
         setIsOpen(true)
     }
 
+    const handleSearch = event => {
+        if (event.target.value) {
+            const searchText = event.target.value;
+            const matchedProducts = allProducts.filter(product =>
+                product.title.toLowerCase().includes(searchText.toLowerCase())
+            );
+
+            dispatch(filterByName(matchedProducts));
+
+            console.log(matchedProducts, searchText)
+        }
+    };
+
+
 
     return (
         <div className="bg-slate-100">
@@ -125,8 +140,8 @@ const NavBar = () => {
                             leaveFrom="translate-x-0"
                             leaveTo="-translate-x-full"
                         >
-                            <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
-                                <div className="flex px-4 pb-2 pt-5">
+                            <Dialog.Panel onClick={() => setOpen(false)} className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+                                <div className="flex justify-between px-4 pb-2 pt-5">
                                     <button
                                         type="button"
                                         className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
@@ -136,10 +151,20 @@ const NavBar = () => {
                                         <span className="sr-only">Close menu</span>
                                         <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                                     </button>
+                                    <div className="lg:flex lg:ml-0" aria-hidden="true">
+                                        <Link to='/' >
+                                            <span className="sr-only">Your Company</span>
+                                            <img
+                                                className="h-12 rounded w-auto"
+                                                src={LOGO}
+                                                alt="YOUR"
+                                            />
+                                        </Link>
+                                    </div>
                                 </div>
 
-                                {/* Links */}
 
+                                {/* Links */}
 
                                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                                     {navigation.pages.map((page) => (
@@ -188,7 +213,7 @@ const NavBar = () => {
                         <div className="flex h-16 items-center">
                             <button
                                 type="button"
-                                className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
+                                className="relative rounded-md mr-5 bg-white p-2 text-gray-400 lg:hidden"
                                 onClick={() => setOpen(true)}
                             >
                                 <span className="absolute -inset-0.5" />
@@ -197,7 +222,7 @@ const NavBar = () => {
                             </button>
 
                             {/* Logo */}
-                            <div className="ml-4 flex lg:ml-0">
+                            <div className="hidden ml-4 lg:flex lg:ml-0">
                                 <Link to='/' >
                                     <span className="sr-only">Your Company</span>
                                     <img
@@ -227,23 +252,25 @@ const NavBar = () => {
                                 </div>
                             </Popover.Group>
 
+
+                            <form className='md:w-80 lg:block lg:ml-12 lg:w-96'>
+                                <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                        <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                        </svg>
+                                    </div>
+                                    <input type="search" id="default-search" className="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 outline-none focus:border-slate-400" onChange={handleSearch} placeholder="Search Products . . ." />
+                                    <button type="submit" onClick={() => handleAllProducts()} className="text-white absolute end-2 bottom-1.5 bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-1.5">X</button>
+                                </div>
+                            </form>
+
+
+
                             <div className="ml-auto flex items-center">
                                 {
-                                    user.firstname ? "" : (
-                                        <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                                            <Link to='/signin' href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
-                                                Sign in
-                                            </Link>
-                                            <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                                            <Link to="/create" href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
-                                                Create account
-                                            </Link>
-                                        </div>
-                                    )
-                                }
-
-                                {
-                                    user.firstname && (
+                                    user.firstname ? (
                                         <div className='flex justify-center items-center' >
                                             <div className="ml-4 flow-root lg:ml-6">
                                                 <a href="#" onClick={openModal} className="group -m-2 flex items-center p-2">
@@ -323,6 +350,8 @@ const NavBar = () => {
                                                         </Dialog>
                                                     </Transition>
 
+                                                    {/* CONFIRM SIGN OUT */}
+
                                                     <Transition appear show={alertOpen} as={Fragment}>
                                                         <Dialog as="div" className="fixed inset-0" onClose={closeAlert}>
                                                             <Transition.Child
@@ -385,8 +414,19 @@ const NavBar = () => {
                                                 </div>
                                             </div>
                                         </div>
+                                    ) : (
+                                        <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                                            <Link to='/signin' href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
+                                                Sign in
+                                            </Link>
+                                            <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
+                                            <Link to="/create" href="#" className="text-sm font-medium text-slate-500 hover:text-slate-900">
+                                                Create account
+                                            </Link>
+                                        </div>
                                     )
                                 }
+
 
                             </div>
                         </div>
@@ -406,6 +446,8 @@ const NavBar = () => {
                     >
                         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
                     </Transition.Child>
+
+                    {/* SHOPPING CART */}
 
                     <div className="fixed inset-0 overflow-hidden">
                         <div className="absolute inset-0 overflow-hidden">

@@ -9,6 +9,7 @@ import { addUser, getProducts } from "../redux/actions"
 import { Link } from "react-router-dom";
 import Card from "./card";
 import NavBar from "./navbar";
+import NavBarLogin from './navbarLogin';
 import Footer from "./footer";
 
 const Home = () => {
@@ -51,7 +52,9 @@ const Home = () => {
 
     return (
         <>
-            <NavBar />
+            {
+                user.firstname ? <NavBar /> : <NavBarLogin />
+            }
             <div className="bg-white/10">
                 <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                     <h2 className="sr-only">Products</h2>

@@ -67,9 +67,9 @@ export const removeCartProducts = () => (dispatch) => {
 }
 
 
-export function orderByName(payload) {
+export function filterByName(payload) {
     return {
-        type: 'ORDER_BY_NAME',
+        type: 'GET_FILTER_PRODUCTS',
         payload
     };
 }

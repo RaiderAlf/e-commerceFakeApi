@@ -112,9 +112,6 @@ const NavBarLogin = () => {
 
                             <div className="ml-auto flex items-center">
                                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                                    <Link to='/' className="text-sm font-medium text-slate-500 hover:text-slate-900">
-                                        Enter Guess
-                                    </Link>
                                     <span className="h-6 w-px bg-gray-400" aria-hidden="true" />
                                     <Link to='/signin' className="text-sm font-medium text-slate-500 hover:text-slate-900">
                                         Sign in

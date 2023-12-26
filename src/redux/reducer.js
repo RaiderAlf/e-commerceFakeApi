@@ -16,28 +16,16 @@ function rootReducer(state = initialState, action) {
                 allProducts: action.payload
             };
 
-        case 'GET_USER':
+        case 'GET_FILTER_PRODUCTS':
             return {
                 ...state,
-                user: action.payload
-            };
-
-        case 'ADD_USER':
-            return {
-                ...state,
-                user: action.payload
+                product: action.payload
             }
 
         case 'GET_CATEGORY_PRODUCT':
             return {
                 ...state,
                 product: action.payload
-            };
-
-        case 'REMOVE_USER':
-            return {
-                ...state,
-                user: action.payload
             };
 
         case 'ADD_CART_PRODUCT':
@@ -59,6 +47,26 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 cartProducts: action.payload
             };
+
+        case 'GET_USER':
+            return {
+                ...state,
+                user: action.payload
+            };
+
+        case 'ADD_USER':
+            return {
+                ...state,
+                user: action.payload
+            }
+
+
+        case 'REMOVE_USER':
+            return {
+                ...state,
+                user: action.payload
+            };
+
 
         default:
             return state;
