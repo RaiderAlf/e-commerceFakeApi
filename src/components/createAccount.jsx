@@ -197,7 +197,9 @@ const CreateAccount = () => {
                                         <span className="sr-only text-red">Info</span>
                                         <div className='flex flex-col items-center justify-center gap-1'>
                                             <span className="font-medium text-blue-800">Please Wait</span>
-                                            <div className="lds-ripple"><div></div><div></div></div>
+                                            <div className="spinner">
+                                                <div className="spinner1"></div>
+                                            </div>
                                             <span className="font-bold text-blue-900">Creating User</span>
                                         </div>
                                     </div>
