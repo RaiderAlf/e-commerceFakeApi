@@ -188,9 +188,9 @@ const ShoppingCart = () => {
                                     leaveFrom="translate-y-0"
                                     leaveTo="translate-y-full"
                                 >
-                                    <Dialog.Panel className="pointer-events-auto sm:min-w-screen sm:flex lg:block lg:w-screen items-center justify-center min-h-screen overflow-auto">
+                                    <Dialog.Panel className="pointer-events-auto min-w-screen flex lg:block lg:w-screen items-center justify-center min-h-screen overflow-auto">
 
-                                        <div className="p-4 min-w-fit min-h-screen sm:flex flex-col items-center lg:block bg-white bg-opacity-85 transition">
+                                        <div className="p-4 min-w-fit min-h-screen flex flex-col items-center lg:block bg-white bg-opacity-85 transition">
                                             <button className="flex items-center justify-between lg:w-full sm:w-max px-5" >
                                                 <Dialog.Title className="text-lg font-medium text-gray-900">CheckOut</Dialog.Title>
                                                 <XMarkIcon onClick={closeCheck} className="relative text-black h-12 w-12" />
