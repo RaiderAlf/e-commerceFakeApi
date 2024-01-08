@@ -138,7 +138,7 @@ const ShoppingCart = () => {
                         ) : (
                             <button disabled
                                 onClick={OpenCheck}
-                                className="flex items-center justify-center rounded-md border border-transparent bg-gray-400 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                                className="flex items-center justify-center rounded-md border border-transparent bg-gray-400 px-6 py-3 text-base font-medium text-white shadow-sm"
                             >
                                 Checkout
                             </button>
