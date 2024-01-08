@@ -192,7 +192,7 @@ const Signin = () => {
                                         <span className="sr-only text-red">Info</span>
                                         <div className='flex flex-col items-center justify-center gap-1'>
                                             <span className="font-medium text-blue-800">Please Wait</span>
-                                            <div className="loader1"></div>
+                                            <div className="lds-ripple"><div></div><div></div></div>
                                             <span className="font-bold text-blue-900">Loading User</span>
                                         </div>
                                     </div>
