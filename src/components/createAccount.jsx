@@ -2,13 +2,13 @@
 import axios from "axios";
 import Cookies from 'js-cookie';
 //HOOKS
-import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from "react";
 import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 //ACTIONS
 import { addUser, removeUser } from "../redux/actions";
 //COMPONENTS
+import { Dialog, Transition } from '@headlessui/react'
 import NavBarLogin from "./navbarLogin"
 
 

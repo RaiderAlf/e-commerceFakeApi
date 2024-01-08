@@ -1,10 +1,11 @@
-//DEPENDENCIES
-import { Dialog, Transition } from '@headlessui/react'
 //HOOKS
 import { useSelector } from 'react-redux'
 import { Fragment, useState } from "react"
 import { useDispatch } from 'react-redux'
+//ACTIONS
 import { addCartProducts } from '../redux/actions'
+//COMPONENTS
+import { Dialog, Transition } from '@headlessui/react'
 
 
 const Card = (product) => {
