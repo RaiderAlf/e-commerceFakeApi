@@ -207,7 +207,6 @@ const Signin = () => {
                                                 </svg>
                                                 <div className="text" data-text="Please wait!"></div>
                                             </div>
-                                            <span className="font-bold text-blue-900">Loading User</span>
                                         </div>
                                     </div>
 

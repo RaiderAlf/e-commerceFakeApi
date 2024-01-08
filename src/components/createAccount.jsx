@@ -212,7 +212,6 @@ const CreateAccount = () => {
                                                 </svg>
                                                 <div className="text" data-text="Please wait!"></div>
                                             </div>
-                                            <span className="font-bold text-blue-900">Creating User</span>
                                         </div>
                                     </div>
 
