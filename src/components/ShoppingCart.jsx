@@ -210,7 +210,7 @@ const ShoppingCart = () => {
 
                                                 <div className="flex gap-2 justify-between text-base font-medium text-gray-900">
                                                     <p>Total Price</p>
-                                                    <p>$ {(Math.ceil(result) + 4.99).toFixed(2)}</p>
+                                                    <p>$ {(result + 4.99).toFixed(2)}</p>
                                                 </div>
                                             </div>
                                             <div className='mx-80 mt-12'>
