@@ -176,9 +176,9 @@ const ShoppingCart = () => {
 
                     </Transition.Child>
 
-                    <div className="fixed inset-0 overflow-hidden w-screen">
-                        <div className="absolute inset-0 overflow-hidden w-screen">
-                            <div className="pointer-events-none fixed inset-y-0 right-0 min-w-screen flex pb-10">
+                    <div className="fixed inset-0 overflow-hidden">
+                        <div className="absolute inset-0 overflow-hidden">
+                            <div className="pointer-events-none fixed inset-0 flex pb-10">
                                 <Transition.Child
                                     as={Fragment}
                                     enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -188,14 +188,14 @@ const ShoppingCart = () => {
                                     leaveFrom="translate-y-0"
                                     leaveTo="translate-y-full"
                                 >
-                                    <Dialog.Panel className="pointer-events-auto w-screen min-h-screen min-w-max overflow-auto">
+                                    <Dialog.Panel className="pointer-events-auto sm:min-w-screen sm:flex lg:block lg:w-screen items-center justify-center min-h-screen overflow-auto">
 
-                                        <div className="p-4 min-w-max min-h-screen bg-white bg-opacity-85 transition">
-                                            <button className="flex items-center justify-between w-full px-5" >
+                                        <div className="p-4 min-w-fit min-h-screen sm:flex flex-col items-center lg:block bg-white bg-opacity-85 transition">
+                                            <button className="flex items-center justify-between lg:w-full sm:w-max px-5" >
                                                 <Dialog.Title className="text-lg font-medium text-gray-900">CheckOut</Dialog.Title>
                                                 <XMarkIcon onClick={closeCheck} className="relative text-black h-12 w-12" />
                                             </button>
-                                            <div className="flex flex-col items-center text-center mt-12 gap-3 justify-between w-full text-base font-medium text-gray-900">
+                                            <div className="flex flex-col items-center text-center mt-12 gap-3 justify-between sm:min-w-sm lg:w-full text-base font-medium text-gray-900">
                                                 <h3 className='text-2xl text-slate-400'>CheckOut Information</h3>
                                                 <div className="flex flex-col gap-2 items-center justify-center text-base font-medium text-gray-900">
                                                     <div>
@@ -211,7 +211,7 @@ const ShoppingCart = () => {
 
                                                 <div className="flex gap-2 justify-between text-base font-medium text-gray-900">
                                                     <p>Total Price</p>
-                                                    <p>$ {Math.ceil(result) + 4.99}</p>
+                                                    <p>$ {(Math.ceil(result) + 4.99).toFixed(2)}</p>
                                                 </div>
                                             </div>
                                             <div className='mx-80 mt-12'>
