@@ -47,7 +47,6 @@ const ShoppingCart = () => {
     if (products.length > 0) {
         for (let i = 0; i < products.length; i++) {
             result += products[i].price
-            result.toFixed(2)
         }
     }
 
