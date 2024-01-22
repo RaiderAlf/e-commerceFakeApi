@@ -105,6 +105,26 @@ const CreateAccount = () => {
         })
     }
 
+    const regexMinMaxCharacters = (pass) => {
+        let re = /^.{6,16}$/
+        return re.test(String(pass));
+    }
+
+    const regexSpecialChar = (pass) => {
+        let re = /(?=.*[.,_!@#$%^&*])/
+        return re.test(pass)
+    }
+
+    const regexLowerCase = (pass) => {
+        let re = /(?=.*[a-z])/
+        return re.test(pass)
+    }
+
+    const regexUpperCase = (pass) => {
+        let re = /(?=.*[A-Z])/
+        return re.test(pass)
+    }
+
     return (
         <>
 
@@ -228,12 +248,16 @@ const CreateAccount = () => {
                 <h1 className="text-slate-600 text-lg border text-center font-medium my-8 backdrop-blur-3xl rounded-lg [box-shadow:_0_0_5px_rgb(0_0_0_/_50%)]">
                     Create Account
                 </h1>
-                <div className="relative z-0 w-full mb-5 group">
+                <div className="relative z-0 w-full mb-7 group">
                     <input type="email" onChange={e => handlerForm(e)} value={inputForm.email} name="email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500 appearance-none focus:outline-none focus:ring-0 focus:border-slate-600 peer" placeholder=" " required />
-                    <label htmlFor="email" className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-slate-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+                    <label htmlFor="email" className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-slate-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Email address</label>
                 </div>
+
                 <div className="relative z-0 w-full mb-5 group">
                     <input type={seePass ? "text" : "password"} onChange={e => handlerForm(e)} value={inputForm.password} name="password" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500 appearance-none focus:outline-none focus:ring-0 focus:border-slate-600 peer" placeholder=" " required />
+
+
+
                     <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
 
                         {
@@ -255,16 +279,99 @@ const CreateAccount = () => {
                         }
 
                     </div>
-                    <label htmlFor="password" className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-slate-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+
+
+                    <label htmlFor="password" className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-slate-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Password</label>
                 </div>
+
+                <div className="flex flex-col justify-between items-center mb-1">
+                    <div className="flex items-start mb-5 gap-2">
+                        {!regexMinMaxCharacters(inputForm.password) ? (
+                            <>
+                                <div className="flex items-center h-5">
+                                    <input disabled checked={false} id="remember" type="checkbox" className="w-3 h-3 border border-slate-100 rounded bg-gray-50 focus:ring-3 focus:ring-slate-300" />
+                                </div>
+                                <label htmlFor="remember" className="text-xs font-medium text-slate-400">Between 6 to 16 characters</label>
+                            </>
+                        )
+                            :
+                            (<>
+                                <div className="flex items-center h-5">
+                                    <input disabled checked={true} id="remember" type="checkbox" className="w-3 h-3 border border-slate-100 rounded bg-gray-50 focus:ring-3 focus:ring-slate-300" />
+                                </div>
+                                <label htmlFor="remember" className="text-xs font-medium text-slate-400">Between 6 to 16 characters</label>
+                            </>
+                            )
+                        }
+                        {
+                            !regexSpecialChar(inputForm.password) ? (
+
+                                <>
+                                    <div className="flex items-center h-5">
+                                        <input disabled checked={false} id="remember" type="checkbox" className="w-3 h-3 border border-slate-100 rounded bg-gray-50 focus:ring-3 focus:ring-slate-300" />
+                                    </div>
+                                    <label htmlFor="remember" className="text-xs font-medium text-slate-400">1 special character</label>
+                                </>
+                            ) : (
+                                <>
+                                    <div className="flex items-center h-5">
+                                        <input disabled checked={true} id="remember" type="checkbox" className="w-3 h-3 border border-slate-100 rounded bg-gray-50 focus:ring-3 focus:ring-slate-300" />
+                                    </div>
+                                    <label htmlFor="remember" className="text-xs font-medium text-slate-400">1 special character</label>
+                                </>
+                            )
+                        }
+                    </div>
+                    <div className="flex items-start mb-5 gap-2">
+                        {
+                            !regexLowerCase(inputForm.password) ? (
+
+                                <>
+                                    <div className="flex items-center h-5">
+                                        <input disabled checked={false} id="remember" type="checkbox" className="w-3 h-3 border border-slate-100 rounded bg-gray-50 focus:ring-3 focus:ring-slate-300" />
+                                    </div>
+                                    <label htmlFor="remember" className="text-xs font-medium text-slate-400">1 lowercase character</label>
+                                </>
+                            ) : (
+                                <>
+                                    <div className="flex items-center h-5">
+                                        <input disabled checked={true} id="remember" type="checkbox" className="w-3 h-3 border border-slate-100 rounded bg-gray-50 focus:ring-3 focus:ring-slate-300" />
+                                    </div>
+                                    <label htmlFor="remember" className="text-xs font-medium text-slate-400">1 lowercase character</label>
+                                </>
+                            )
+                        }
+                        {
+                            !regexUpperCase(inputForm.password) ? (
+                                <>
+                                    <div className="flex items-center h-5">
+                                        <input disabled checked={false} id="remember" type="checkbox" className="w-3 h-3 border border-slate-100 rounded bg-gray-50 focus:ring-3 focus:ring-slate-300" />
+                                    </div>
+                                    <label htmlFor="remember" className="text-xs font-medium text-slate-400">1 uppercase character</label>
+                                </>
+                            ) : (
+                                <>
+                                    <div className="flex items-center h-5">
+                                        <input disabled checked={true} id="remember" type="checkbox" className="w-3 h-3 border border-slate-100 rounded bg-gray-50 focus:ring-3 focus:ring-slate-300" />
+                                    </div>
+                                    <label htmlFor="remember" className="text-xs font-medium text-slate-400">1 uppercase character</label>
+                                </>
+                            )
+                        }
+
+                    </div>
+
+                </div>
+
+
                 <div className="grid md:grid-cols-2 md:gap-6">
                     <div className="relative z-0 w-full mb-5 group">
                         <input type="text" onChange={e => handlerForm(e)} value={inputForm.firstname} name="firstname" id="floating_first_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500 appearance-none focus:outline-none focus:ring-0 focus:border-slate-600 peer" placeholder=" " required />
-                        <label htmlFor="firstname" className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-slate-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First Name</label>
+                        <label htmlFor="firstname" className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-slate-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">First Name</label>
                     </div>
                     <div className="relative z-0 w-full mb-5 group">
                         <input type="text" onChange={e => handlerForm(e)} value={inputForm.lastname} name="lastname" id="floating_last_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500 appearance-none focus:outline-none focus:ring-0 focus:border-slate-600 peer" placeholder=" " required />
-                        <label htmlFor="lastname" className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-slate-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last Name</label>
+                        <label htmlFor="lastname" className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-slate-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Last Name</label>
                     </div>
                 </div>
 

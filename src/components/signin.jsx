@@ -15,7 +15,6 @@ const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL
 })
 
-
 const Signin = () => {
 
     const navigate = useNavigate()
@@ -25,7 +24,7 @@ const Signin = () => {
 
     const [loader, setLoader] = useState(false)
 
-    const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(true);
 
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
@@ -205,7 +204,7 @@ const Signin = () => {
                                                     <circle className="back" cx="17" cy="17" r="14"></circle>
                                                     <circle className="front" cx="17" cy="17" r="14"></circle>
                                                 </svg>
-                                                <div className="text" data-text="Please wait!"></div>
+                                                <div className="text" data-text="wait!"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -224,12 +223,14 @@ const Signin = () => {
                 </h1>
                 <div className="relative z-0 w-full mb-8 group">
                     <input type="email" onChange={e => handlerForm(e)} value={inputForm.email} name="email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500 appearance-none focus:outline-none focus:ring-0 focus:border-slate-600 peer" placeholder=" " required />
+
                     <label htmlFor="email" className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-slate-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
                 </div>
                 <div className="relative z-0 w-full mb-8 group">
 
 
                     <input type={seePass ? "text" : "password"} onChange={e => handlerForm(e)} value={inputForm.pass} name="pass" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500 appearance-none focus:outline-none focus:ring-0 focus:border-slate-600 peer" placeholder=" " required />
+
                     <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
                         {
                             seePass ? (
